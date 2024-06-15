@@ -64,8 +64,8 @@ function getMove (choice) {
 function getHumanChoice () {
 
     let humanChoice = prompt("Enter one of these values: 'rock', 'paper', 'scissors'", "rock");
-    
-    return humanChoice;
+    // ensure humanChoice is case-insensitive
+    return humanChoice.toLowerCase();
 }
 
 function getWinner(h_choice, c_choice) {
