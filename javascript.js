@@ -1,6 +1,7 @@
 const rounds = 5;
 let humanScore = 0;
 let computerScore = 0;
+let roundsDrawn = 0;
 
 function playGame(rounds) {
     // keep playing based on rounds set 
@@ -8,7 +9,7 @@ function playGame(rounds) {
         playRound();
     }
     // compare score and announce result
-    console.log(`human score: ${humanScore}; computerScore: ${computerScore}`);
+    console.log(`human score: ${humanScore}; computerScore: ${computerScore}; roundsDrawn: ${roundsDrawn}`);
     humanScore > computerScore ? 
     console.log(`You won`) : 
     console.log("Try again!");
@@ -29,9 +30,9 @@ function playRound() {
     // update score if there is winner
     if (winner) {
         updateScore(winner);
-    // do nothing if no winner
+    // record rounds with no winners 
     } else {
-        console.log("match draw");
+        roundsDrawn +=1;
     }
 }
 
