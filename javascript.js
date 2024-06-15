@@ -1,5 +1,18 @@
+const rounds = 5;
 let humanScore = 0;
 let computerScore = 0;
+
+function playGame(rounds) {
+    // keep playing based on rounds set 
+    for (let i=0; i<rounds; i++) {
+        playRound();
+    }
+    // compare score and announce result
+    console.log(`human score: ${humanScore}; computerScore: ${computerScore}`);
+    humanScore > computerScore ? 
+    console.log(`You won`) : 
+    console.log("Try again!");
+}
 
 function playRound() {
 
@@ -13,12 +26,12 @@ function playRound() {
     // 2: computer win
     let winner = getWinner(humanChoice, computerChoice);
 
-    // announce no winner in case of a draw
-    if (!winner) {
-        console.log("No winner");
-    // else update score and announce result if there is a winner
-    } else {
+    // update score if there is winner
+    if (winner) {
         updateScore(winner);
+    // do nothing if no winner
+    } else {
+        console.log("match draw");
     }
 }
 
@@ -86,12 +99,10 @@ function updateScore(winner) {
     // if human won, increment score and inform player 
     if (winner === 1) {
         humanScore += 1;
-        console.log(`You won`);
     // if computer won, increment score and inform player 
     } else {
         computerScore +=1;
-        console.log("Try again!")
     }
 }
 
-playRound();
+playGame(rounds);
