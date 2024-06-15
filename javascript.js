@@ -1,7 +1,27 @@
 let humanScore = 0;
 let computerScore = 0;
 
-// Get computer's choice 
+function playRound() {
+
+    // store human and computer choice
+    let humanChoice = getHumanChoice();
+    let computerChoice = getComputerChoice();
+
+    // declare an int variable where 
+    // 0: no winner
+    // 1: player win
+    // 2: computer win
+    let winner = getWinner(humanChoice, computerChoice);
+
+    // announce no winner in case of a draw
+    if (!winner) {
+        console.log("No winner");
+    // else update score and announce result if there is a winner
+    } else {
+        updateScore(winner);
+    }
+}
+
 function getComputerChoice () {
 
     // Init computerChoice as random between range 1-3
@@ -34,40 +54,6 @@ function getHumanChoice () {
     return humanChoice;
 }
 
-function playRound() {
-
-    // store human and computer choice
-    let humanChoice = getHumanChoice();
-    let computerChoice = getComputerChoice();
-
-    // declare an int variable where 
-    // 0: no winner
-    // 1: player win
-    // 2: computer win
-    let winner = getWinner(humanChoice, computerChoice);
-
-    // announce no winner in case of a draw
-    if (!winner) {
-        console.log("No winner");
-    // else update score and announce result if there is a winner
-    } else {
-        updateScore(winner);
-    }
-}
-
-function updateScore(winner) {
-
-    // if human won, increment score and inform player 
-    if (winner === 1) {
-        humanScore += 1;
-        console.log(`You won`);
-    // if computer won, increment score and inform player 
-    } else {
-        computerScore +=1;
-        console.log("Try again!")
-    }
-}
-
 function getWinner(h_choice, c_choice) {
 
     // declare playerWin as an int variable
@@ -95,9 +81,17 @@ function getWinner(h_choice, c_choice) {
     return winner
 }
 
+function updateScore(winner) {
 
-// console.log(`Computer picked ${getComputerChoice()}`);
-
-// console.log(`Human picked ${getHumanChoice()}`);
+    // if human won, increment score and inform player 
+    if (winner === 1) {
+        humanScore += 1;
+        console.log(`You won`);
+    // if computer won, increment score and inform player 
+    } else {
+        computerScore +=1;
+        console.log("Try again!")
+    }
+}
 
 playRound();
