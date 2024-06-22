@@ -15,10 +15,10 @@ function playGame(rounds) {
     console.log("Try again!");
 }
 
-function playRound() {
+function playRound(selectedMove) {
 
     // store human and computer choice
-    let humanChoice = getHumanChoice();
+    let humanChoice = selectedMove;
     let computerChoice = getComputerChoice();
 
     // declare an int variable where 
@@ -106,4 +106,10 @@ function updateScore(winner) {
     }
 }
 
-playGame(rounds);
+// playGame(rounds);
+
+const ropasciBtns = document.querySelectorAll("button");
+ropasciBtns.forEach((btn) => {
+    btn.addEventListener('click', () => playRound(btn.id))
+}); 
+
