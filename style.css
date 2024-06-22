@@ -10,6 +10,10 @@ h1 {
 
 .results-section {
     height: 200px;
+    font-size: 4rem;
+    display:flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .move {

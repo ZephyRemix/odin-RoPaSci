@@ -1,3 +1,4 @@
+const resultSection = document.querySelector(".results-section");
 const rounds = 5;
 let humanScore = 0;
 let computerScore = 0;
@@ -96,13 +97,19 @@ function getWinner(h_choice, c_choice) {
 }
 
 function updateScore(winner) {
-
+    // if the text node not created yet, then create placeholder 
+    // if (resultSection.textContent === "") {
+    //     let roundWinnerAnnouncement = document.createTextNode("");
+    //     resultSection.appendChild(roundWinnerAnnouncement);
+    // }
     // if human won, increment score and inform player 
     if (winner === 1) {
         humanScore += 1;
+        resultSection.textContent = "Congrats, you won!";
     // if computer won, increment score and inform player 
     } else {
         computerScore +=1;
+        resultSection.textContent = "Better luck next round!";
     }
 }
 
