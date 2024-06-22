@@ -27,7 +27,8 @@ function playRound(selectedMove) {
         resultSection.textContent = "Same hands, it's a draw!";
     }
     rounds++;
-    console.log(rounds);
+
+    // announce the winner when game ends
     if (rounds == TOTAL_ROUNDS) {
         announceWinner();
     }
@@ -114,10 +115,7 @@ function announceWinner() {
     } 
 }
 
-// playGame(rounds);
-
 const ropasciBtns = document.querySelectorAll("button");
 ropasciBtns.forEach((btn) => {
     btn.addEventListener('click', () => playRound(btn.id))
 }); 
-
