@@ -1,20 +1,10 @@
 const resultSection = document.querySelector(".results-section");
-const rounds = 5;
+const TOTAL_ROUNDS = 5;
+let rounds = 0;
 let humanScore = 0;
 let computerScore = 0;
 let roundsDrawn = 0;
 
-function playGame(rounds) {
-    // keep playing based on rounds set 
-    for (let i=0; i<rounds; i++) {
-        playRound();
-    }
-    // compare score and announce result
-    console.log(`human score: ${humanScore}; computerScore: ${computerScore}; roundsDrawn: ${roundsDrawn}`);
-    humanScore > computerScore ? 
-    console.log(`You won`) : 
-    console.log("Try again!");
-}
 
 function playRound(selectedMove) {
 
@@ -34,6 +24,12 @@ function playRound(selectedMove) {
     // record rounds with no winners 
     } else {
         roundsDrawn +=1;
+        resultSection.textContent = "Same hands, it's a draw!";
+    }
+    rounds++;
+    console.log(rounds);
+    if (rounds == TOTAL_ROUNDS) {
+        announceWinner();
     }
 }
 
@@ -97,11 +93,6 @@ function getWinner(h_choice, c_choice) {
 }
 
 function updateScore(winner) {
-    // if the text node not created yet, then create placeholder 
-    // if (resultSection.textContent === "") {
-    //     let roundWinnerAnnouncement = document.createTextNode("");
-    //     resultSection.appendChild(roundWinnerAnnouncement);
-    // }
     // if human won, increment score and inform player 
     if (winner === 1) {
         humanScore += 1;
@@ -111,6 +102,16 @@ function updateScore(winner) {
         computerScore +=1;
         resultSection.textContent = "Better luck next round!";
     }
+}
+
+function announceWinner() {
+    if (humanScore > computerScore) {
+        resultSection.textContent = "End of game: Congratulations, you won!";
+    } else if (humanScore === computerScore) {
+        resultSection.textContent = "End of game: It'a tie!";
+    } else {
+        resultSection.textContent = `End of game: You lost by ${computerScore - humanScore} rounds, better luck next time!`;
+    } 
 }
 
 // playGame(rounds);
